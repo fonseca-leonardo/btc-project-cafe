@@ -1,0 +1,7 @@
+{
+  "name": "btc-project-cafe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
