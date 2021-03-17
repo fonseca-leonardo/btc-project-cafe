@@ -1,34 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Log In</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]>
+  <main class="login-container ion-padding">
+    <div class="img-logo">
+      <img src="../../../assets/Logo.png" alt="Logo" />
+    </div>
+    <form standalone (ngSubmit)="Login()">
+      <ion-item color="transparent">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-label position="floating">Nickname</ion-label>
+        <ion-input
+          required
+          [(ngModel)]="user.nickname"
+          [ngModelOptions]="{standalone: true}"
+          type="text"
+        ></ion-input>
+      </ion-item>
 
-<ion-content>
-  <form>
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
+      <ion-item color="transparent">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input
+          required
+          [(ngModel)]="user.password"
+          [ngModelOptions]="{standalone: true}"
+          type="password"
+        ></ion-input>
+      </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
-    </ion-item>
+      <button ion-button class="ion-margin-top button-custom" type="submit">
+        Logar
+      </button>
+    </form>
 
-    <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
-    <ion-row>
-      <ion-col class="ion-align-self-start">
-        <a [routerLink]="['/forgot-password']" class="small-text"
-          >Forgot Password?</a
+    <footer class="login-footer">
+      <ion-card>
+        <ion-text
+          >Não possui conta?
+          <ion-link [routerLink]="['/registration']"
+            >Criar uma</ion-link
+          ></ion-text
+        ><br />
+        <ion-text
+          >Esqueceu a senha?
+          <ion-link [routerLink]="['/forgot-password']"
+            >Recupere aqui</ion-link
+          ></ion-text
         >
-      </ion-col>
-      <ion-col class="ion-align-self-end">
-        <a [routerLink]="['/registration']" class="small-text">Registrar</a>
-      </ion-col>
-    </ion-row>
-  </form>
+      </ion-card>
+    </footer>
+  </main>
 </ion-content>
