@@ -12,13 +12,20 @@ export class RegistrationPage implements OnInit {
   createUser: UserCreateData = {
     nickname: '',
     email: '',
+    emailConfirmation: '',
     password: '',
+    passwordConfirmation: '',
   };
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {}
 
   register() {
+    if (this.createUser.email !== this.createUser.emailConfirmation) return;
+
+    if (this.createUser.password !== this.createUser.passwordConfirmation)
+      return;
+
     this.userService.userCreate(this.createUser).subscribe((e) => {
       this.router.navigate(['/login']);
     });

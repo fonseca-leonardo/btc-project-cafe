@@ -24,7 +24,21 @@ export class UserService {
 
   userCreate(user: UserCreateData): Observable<UserCreateData> {
     const url = this.baseUrl + '/register';
-    return this.http.post(url, user).pipe(
+    const userInsert = {
+      email: user.email,
+      password: user.password,
+      nickname: user.nickname,
+    };
+    return this.http.post(url, userInsert).pipe(
+      map((obj: any) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  userRecoveryAccount(email: string): Observable<string> {
+    const url = this.baseUrl + '/forgot-password';
+
+    return this.http.post(url, { email }).pipe(
       map((obj: any) => obj),
       catchError((e) => this.errorHandler(e))
     );

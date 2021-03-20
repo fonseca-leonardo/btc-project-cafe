@@ -32,20 +32,14 @@
     </form>
 
     <footer class="login-footer">
-      <ion-card>
-        <ion-text
-          >Não possui conta?
-          <ion-link [routerLink]="['/registration']"
-            >Criar uma</ion-link
-          ></ion-text
-        ><br />
-        <ion-text
-          >Esqueceu a senha?
-          <ion-link [routerLink]="['/forgot-password']"
-            >Recupere aqui</ion-link
-          ></ion-text
-        >
-      </ion-card>
+      <span
+        >Não possui conta?
+        <a [routerLink]="['/registration']">Criar uma</a></span
+      ><br />
+      <span
+        >Esqueceu a senha?
+        <a [routerLink]="['/forgot-password']">Recupere aqui</a></span
+      >
     </footer>
   </main>
 </ion-content>

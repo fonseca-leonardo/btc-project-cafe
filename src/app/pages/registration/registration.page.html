@@ -1,7 +1,7 @@
 <ion-content>
   <main class="login-container ion-padding">
     <div class="img-logo">
-      <img src="../../../assets/Logo.png" alt="Logo" />
+      <img src="../../../assets/logo-register.png" alt="Logo" />
     </div>
     <form standalone (ngSubmit)="register()">
       <ion-item color="transparent">
@@ -10,6 +10,16 @@
         <ion-input
           required
           [(ngModel)]="createUser.email"
+          [ngModelOptions]="{standalone: true}"
+          type="email"
+        ></ion-input>
+      </ion-item>
+      <ion-item color="transparent">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-label position="floating">Confirmação de email</ion-label>
+        <ion-input
+          required
+          [(ngModel)]="createUser.emailConfirmation"
           [ngModelOptions]="{standalone: true}"
           type="text"
         ></ion-input>
@@ -33,6 +43,17 @@
           [(ngModel)]="createUser.password"
           [ngModelOptions]="{standalone: true}"
           type="password"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+        <ion-label position="floating">Confirmação de senha</ion-label>
+        <ion-input
+          required
+          [(ngModel)]="createUser.passwordConfirmation"
+          [ngModelOptions]="{standalone: true}"
+          type="text"
         ></ion-input>
       </ion-item>
 
