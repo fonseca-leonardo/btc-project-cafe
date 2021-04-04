@@ -1,0 +1,43 @@
+.centralize {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  background: url("../../../assets/background.jpg");
+}
+
+.align-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.margin {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.button-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-text);
+  width: 80%;
+  max-width: 500px;
+  height: 2rem;
+  outline: none;
+}
+
+.top {
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 0.2rem;
+}
+
+.bottom {
+  background: var(--ion-color-secondary);
+  border-radius: 0 0 5px 5px;
+}

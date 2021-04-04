@@ -1,0 +1,52 @@
+.login-container {
+  height: 100vh;
+  background: url("../../../assets/background.jpg") center no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.img-logo {
+  display: flex;
+  margin: 1rem auto;
+  justify-content: center;
+  width: 100%;
+}
+
+form {
+  width: 100%;
+  max-width: 500px;
+
+  margin: 32px auto;
+  padding: 32px 64px;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.button-custom {
+  width: 100%;
+  height: 3rem;
+  border-radius: 10px;
+  background: linear-gradient(
+    var(--ion-color-primary),
+    var(--ion-color-secondary)
+  );
+}
+
+.login-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+span {
+  color: white;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+a {
+  text-decoration: none;
+}

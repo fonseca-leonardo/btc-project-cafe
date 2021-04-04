@@ -1,0 +1,45 @@
+<ion-content [fullscreen]>
+  <main class="login-container ion-padding">
+    <div class="img-logo">
+      <img src="../../../assets/Logo.png" alt="Logo" />
+    </div>
+    <form standalone (ngSubmit)="Login()">
+      <ion-item color="transparent">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-label position="floating">Nickname</ion-label>
+        <ion-input
+          required
+          [(ngModel)]="user.nickname"
+          [ngModelOptions]="{standalone: true}"
+          type="text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input
+          required
+          [(ngModel)]="user.password"
+          [ngModelOptions]="{standalone: true}"
+          type="password"
+        ></ion-input>
+      </ion-item>
+
+      <button ion-button class="ion-margin-top button-custom" type="submit">
+        Logar
+      </button>
+    </form>
+
+    <footer class="login-footer">
+      <span
+        >Não possui conta?
+        <a [routerLink]="['/registration']">Criar uma</a></span
+      ><br />
+      <span
+        >Esqueceu a senha?
+        <a [routerLink]="['/forgot-password']">Recupere aqui</a></span
+      >
+    </footer>
+  </main>
+</ion-content>
