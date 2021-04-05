@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { ChartsModule } from 'ng2-charts';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    ChartsModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
   ],

@@ -1,17 +1,37 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Valor das Cryptos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        BTC em BRL
+      </ion-card-header>
+      <ion-card-content>
+        <canvas baseChart [datasets]="btcChartData" [colors]="btcChartColor" [options]="chartOptions" [chartType]="chartType" [labels]="chartLabels"></canvas>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        ETH em BRL
+      </ion-card-header>
+      <ion-card-content>
+        <canvas baseChart [datasets]="ethChartData" [colors]="ethChartColor" [chartType]="chartType" [labels]="chartLabels"></canvas>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        LTC em BRL
+      </ion-card-header>
+      <ion-card-content>
+        <canvas baseChart [datasets]="ltcChartData" [colors]="ltcChartColor" [chartType]="chartType" [labels]="chartLabels"></canvas>
+      </ion-card-content>
+    </ion-card>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  </div>
 </ion-content>
