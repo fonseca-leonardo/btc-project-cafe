@@ -23,13 +23,16 @@
     "@capacitor/core": "2.4.7",
     "@ionic/angular": "^5.5.2",
     "@ionic/storage-angular": "^3.0.2",
+    "chart.js": "2.9.3",
     "document-register-element": "^1.7.2",
+    "ng2-charts": "^2.4.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1101.4",
+    "@types/chart.js": "^2.9.31",
     "@angular/cli": "~11.1.4",
     "@angular/compiler": "~11.2.0",
     "@angular/compiler-cli": "~11.2.0",
