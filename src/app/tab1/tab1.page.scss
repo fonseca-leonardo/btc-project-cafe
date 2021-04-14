@@ -1,0 +1,13 @@
+#coin-card-list {
+  display: flex;
+  list-style: none;
+  overflow-x: auto;
+}
+
+#coin-card-list:first-child {
+  margin-left: 0 !important;
+}
+
+#coin-card-list > * {
+  margin-right: 16px;
+}

@@ -1,0 +1,10 @@
+<ion-card class="coin-card" [ngStyle]="{ background: backgroundColor }" >
+  <ion-card-header>
+    <img src="{{coinImage}}" alt="coinName"/>
+  </ion-card-header>
+  <ion-card-content class="card-content">
+    <span class="coin-name" [ngStyle]="{ color: fontColor }">{{coinName}}</span>
+    <br />
+    <span class="coin-quantity" [ngStyle]="{ color: fontColor }">{{quantity}}</span>
+  </ion-card-content>
+</ion-card>
