@@ -12,6 +12,15 @@ interface ICoinsCardProps {
 
   quantity: number;
 }
+interface ICoinsItemsProps {
+  coinImage: string;
+
+  coinName: string;
+
+  price: number;
+
+  trending: 'up' | 'down';
+}
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -36,9 +45,20 @@ export class Tab1Page {
     },
   ];
 
-  constructor(private navParams: ActivatedRoute) {
-    this.navParams.queryParams.subscribe((params) => {
-      console.log(params);
-    });
-  }
+  public coinItems: ICoinsItemsProps[] = [
+    {
+      coinImage: '../../../assets/bitcoin-coincard.png',
+      coinName: 'BITCOIN',
+      price: 365457,
+      trending: 'up',
+    },
+    {
+      coinImage: '../../../assets/ethereum-coincard.png',
+      coinName: 'ETHERIUM',
+      price: 13504,
+      trending: 'down',
+    },
+  ];
+
+  constructor() {}
 }

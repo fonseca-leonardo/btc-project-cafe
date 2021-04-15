@@ -1,12 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Minha Conta
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+    <img id="background-image" src="../../assets/point-sphere.png"/>
     <ul id="coin-card-list">
       <li *ngFor="let coin of userCoins">
         <app-coincard
@@ -18,6 +19,14 @@
         ></app-coincard>
       </li>
     </ul>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ul id="coin-item-list">
+      <li *ngFor="let item of coinItems">
+        <app-coinitem
+          coinImage="{{item.coinImage}}"
+          coinName="{{item.coinName}}"
+          trending="{{item.trending}}"
+          coinPrice="{{item.price}}"
+        ></app-coinitem>
+      </li>
+    </ul>
 </ion-content>

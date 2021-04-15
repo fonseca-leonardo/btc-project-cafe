@@ -118,8 +118,4 @@ export class Tab3Page implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  goToWallet(id: string) {
-    this.router.navigate(['/tabs/tab1'], { queryParams: { id } });
-  }
 }
