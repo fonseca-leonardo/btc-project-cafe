@@ -1,6 +1,10 @@
 import { DomElementSchemaRegistry } from '@angular/compiler';
 import { Component } from '@angular/core';
 
+interface Transaction {
+  value: number;
+  date: Date;
+}
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -8,12 +12,10 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
   public coins: string[] = [
-    'US Dolar',
-    'BRL Real',
-    'EUR Euro',
     'BTC Bitcoin',
     'ETH Etherium',
     'DGE DogeCoin',
+    'LTC LiteCoin',
   ];
   public coinsFilter: string[] = this.coins;
 
@@ -21,13 +23,35 @@ export class Tab2Page {
 
   ngOnInit() {}
 
-  search(ev: CustomEvent) {
+  public pesquisar(ev: CustomEvent) {
     let val = ev.detail.value;
     if (val && val.trim() !== '') {
       this.coinsFilter = this.coins.filter(
-        (term) =>
-          term.toLocaleLowerCase().indexOf(val.toLowerCase().trim()) > -1
+        (term) => term.toLocaleLowerCase().indexOf(val.toLowerCase()) > -1
       );
     } else this.coinsFilter = this.coins;
+  }
+
+  public currentValue = 0;
+  public maxValue = 0;
+  public selectedValue = 0;
+
+  public transactions: Transaction[] = [
+    // {
+    //   value: 500,
+    //   date: new Date(),
+    // },
+  ];
+
+  public increment() {
+    this.currentValue += this.selectedValue;
+    this.maxValue = Math.max(this.maxValue, this.currentValue);
+
+    this.transactions.push({
+      value: this.selectedValue,
+      date: new Date(),
+    });
+
+    this.selectedValue = 0;
   }
 }
