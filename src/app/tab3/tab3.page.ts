@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 @Component({
@@ -98,7 +99,7 @@ export class Tab3Page implements OnInit {
 
   public chartLabels: Label[] = [];
 
-  constructor() {
+  constructor(private router: Router) {
     this.loadData();
   }
 

@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-item>
+  <ion-toolbar color='primary'>
+        <ion-item>
     <ion-icon slot = "icon-only">
       <ion-img src="../../../assets/SmallLogo.png" alt="Logo"></ion-img>
       </ion-icon>
@@ -12,10 +12,49 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-grid >
-    <ion-list *ngFor="let c of coinsFilter">
-      <ion-item>{{c}}</ion-item>
-    </ion-list>
-  </ion-grid>
+<ion-content [fullscreen]="true" class="ion-padding ion-text-center" color="primary">
+  <h1>
+    {{currentValue}}
+  </h1>
+  <h2>
+    Valor Maximo: {{maxValue}}
+  </h2>
+  
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="auto">
+    </ion-col>
+  </ion-row>
+  <ion-row>
+  <ion-col>
+  <ion-item color="primary">
+    <ion-label position="floating">
+      Valor
+    </ion-label>
+    <ion-input type="number" [(ngModel)]="selectedValue">
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  <ion-col size="auto">
+      <ion-button (click)="increment()" fill="clear" color="light">
+      <ion-icon slot="icon-only" name="cash-outline"></ion-icon>
+    </ion-button>
+  </ion-col>  
+</ion-row>
+
+ <ion-list class="ion-no-padding ion-margin-top">
+   <ion-item color="primary" *ngFor="let transaction of transactions">
+     <ion-label>
+       <ion-row>
+       <ion-col>{{transaction.value | currency:'BRL'}}</ion-col>
+       <!-- <ion-col>Value in BTC</ion-col> -->
+       <ion-col size="auto">{{transaction.date | date:'d/M/Y - H:m'}}h</ion-col>
+      </ion-row>
+     </ion-label>
+   </ion-item>
+ </ion-list> 
+
+  <ion-list *ngFor="let c of coins">
+    <ion-item>{{c}}</ion-item>
+  </ion-list>
 </ion-content>
+

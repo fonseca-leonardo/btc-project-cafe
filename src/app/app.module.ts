@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { ChartsModule } from 'ng2-charts';
 import { AppComponent } from './app.component';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

@@ -1,0 +1,24 @@
+.container {
+  background: #fff;
+  margin-right: 24px;
+  color: #303962;
+
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.goIcon {
+  color: rgb(194, 32, 189);
+  font-size: 32px;
+}
+
+.trending-icon {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.trending-up {
+  color: green;
+}
+.trending-down {
+  color: red;
+}

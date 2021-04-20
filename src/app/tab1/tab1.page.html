@@ -1,17 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Minha Conta
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <img id="background-image" src="../../assets/point-sphere.png"/>
+    <ul id="coin-card-list">
+      <li *ngFor="let coin of userCoins">
+        <app-coincard
+          backgroundColor="{{coin.backgroundColor}}"
+          coinImage="{{coin.coinImage}}"
+          coinName="{{coin.coinName}}"
+          quantity="{{coin.quantity}}"
+          fontColor="{{coin.fontColor}}"
+        ></app-coincard>
+      </li>
+    </ul>
+    <ul id="coin-item-list">
+      <li *ngFor="let item of coinItems">
+        <app-coinitem
+          coinImage="{{item.coinImage}}"
+          coinName="{{item.coinName}}"
+          trending="{{item.trending}}"
+          coinPrice="{{item.price}}"
+        ></app-coinitem>
+      </li>
+    </ul>
 </ion-content>
