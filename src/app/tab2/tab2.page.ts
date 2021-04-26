@@ -5,6 +5,12 @@ interface Transaction {
   value: number;
   date: Date;
 }
+
+interface coins {
+  coinImage: string;
+
+  coinName: string;
+}
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -17,6 +23,18 @@ export class Tab2Page {
     'DGE DogeCoin',
     'LTC LiteCoin',
   ];
+
+  public coinItems: coins[] = [
+    {
+      coinImage: '../../../assets/bitcoin-coincard.png',
+      coinName: 'BITCOIN',
+    },
+    {
+      coinImage: '../../../assets/ethereum-coincard.png',
+      coinName: 'ETHERIUM',
+    },
+  ];
+
   public coinsFilter: string[] = this.coins;
 
   constructor() {}
