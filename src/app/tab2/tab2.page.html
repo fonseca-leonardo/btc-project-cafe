@@ -49,20 +49,23 @@
        <ion-row>
        <ion-col>{{transaction.value | currency:'BRL'}}</ion-col>
        <!-- <ion-col>Value in BTC</ion-col> -->
-       <ion-col size="auto">{{transaction.date | date:'d/M/Y - H:m'}}h</ion-col>
+       <ion-col size="auto">{{transaction.date | date:'d/M/Y - H:mm'}}h</ion-col>
       </ion-row>
      </ion-label>
    </ion-item>
  </ion-list> 
 
- <ul id="coin-item-list">
-   <li *ngFor="let item of coinItems">
-     <app-coinitem
+ <ul class="extratodetails">
+    <!-- <ion-row>  -->
+     
+   <li *ngFor="let item of coins2">
+     <app-extratodetails
      coinImage="{{item.coinImage}}"
      coinName="{{item.coinName}}"
-     ></app-coinitem>
+     ></app-extratodetails>
    </li>
-
+  
+   <!-- </ion-row>  -->
  </ul>
 </ion-content>
 

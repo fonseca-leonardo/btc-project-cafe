@@ -24,14 +24,18 @@ export class Tab2Page {
     'LTC LiteCoin',
   ];
 
-  public coinItems: coins[] = [
+  public coins2: coins[] = [
     {
       coinImage: '../../../assets/bitcoin-coincard.png',
-      coinName: 'BITCOIN',
+      coinName: 'BTC - BITCOIN',
     },
     {
       coinImage: '../../../assets/ethereum-coincard.png',
-      coinName: 'ETHERIUM',
+      coinName: 'ETH - ETHERIUM',
+    },
+    {
+      coinImage: '../../../assets/litecoin-coincard.png',
+      coinName: 'LTC - LITECOIN',
     },
   ];
 
