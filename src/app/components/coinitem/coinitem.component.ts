@@ -20,7 +20,5 @@ export class CoinitemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.trending);
-  }
+  ngOnInit() {}
 }

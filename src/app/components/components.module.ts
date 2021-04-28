@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 
 import { CoincardComponent } from '../components/coincard/coincard.component';
 import { CoinitemComponent } from '../components/coinitem/coinitem.component';
+import { ExtratoDetailsComponent } from '../components/extratodetails/extratodetails.component';
 
 @NgModule({
   imports: [IonicModule, CommonModule, FormsModule],
-  exports: [CoincardComponent, CoinitemComponent],
-  declarations: [CoincardComponent, CoinitemComponent],
+  exports: [CoincardComponent, CoinitemComponent, ExtratoDetailsComponent],
+  declarations: [CoincardComponent, CoinitemComponent, ExtratoDetailsComponent],
 })
 export class ComponentsModule {}

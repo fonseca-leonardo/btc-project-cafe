@@ -1,0 +1,9 @@
+<ion-item color="white" lines="none" >
+  <img *ngIf="cryptoType === 'BTC'" src="../../../assets/bitcoin-coincard.png" alt="Bitcoin"/>
+  <img *ngIf="cryptoType === 'ETH'" src="../../../assets/ethereum-coincard.png" alt="Ethereum"/>
+  <img *ngIf="cryptoType === 'LTC'" src="../../../assets/litecoin-coincard.png" alt="Litecoin"/>
+
+  <ion-label class="debit-label" *ngIf="value < 0">{{value | currency:'BRL' }}</ion-label>
+  <ion-label class="credit-label" *ngIf="value > 0">{{value | currency:'BRL' }}</ion-label>
+  <ion-label>{{date}}</ion-label>
+</ion-item>
