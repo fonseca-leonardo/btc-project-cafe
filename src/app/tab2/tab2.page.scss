@@ -3,10 +3,6 @@ ion-toolbar {
   --ion-color-base: transparent !important;
 }
 
-li {
-  margin-top: 16px;
-}
-
 ion-content {
   --background: linear-gradient(
     0deg,
@@ -14,4 +10,11 @@ ion-content {
     rgba(167, 127, 240, 1) 55%,
     rgba(64, 70, 138, 1) 100%
   );
+}
+
+ion-list {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
 }

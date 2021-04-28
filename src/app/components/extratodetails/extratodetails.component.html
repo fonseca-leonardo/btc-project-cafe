@@ -1,19 +1,9 @@
-<ion-grid class="container">
-  <ion-row class="ion-align-items-center">
-    <ion-col size="2">
-      <img src="{{coinImage}}" alt="{{coinName}}"/>
-    </ion-col>
-    <ion-col size="8" >
-      <ion-row >
-        <span>{{coinName}}</span>
-      </ion-row>
-      <ion-row class="ion-align-items-end" >
-        <span>{{coinQTD}}</span>
-      </ion-row>
-    </ion-col>
-    <ion-col size="2">
-      <ion-icon class="goIcon" name="chevron-forward-outline">
-      </ion-icon>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<ion-item color="white" lines="none" >
+  <img *ngIf="cryptoType === 'BTC'" src="../../../assets/bitcoin-coincard.png" alt="Bitcoin"/>
+  <img *ngIf="cryptoType === 'ETH'" src="../../../assets/ethereum-coincard.png" alt="Ethereum"/>
+  <img *ngIf="cryptoType === 'LTC'" src="../../../assets/litecoin-coincard.png" alt="Litecoin"/>
+
+  <ion-label class="debit-label" *ngIf="value < 0">{{value | currency:'BRL' }}</ion-label>
+  <ion-label class="credit-label" *ngIf="value > 0">{{value | currency:'BRL' }}</ion-label>
+  <ion-label>{{date}}</ion-label>
+</ion-item>
