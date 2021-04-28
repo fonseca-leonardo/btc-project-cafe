@@ -22,6 +22,7 @@
     <ul id="coin-item-list">
       <li *ngFor="let item of coinItems">
         <app-coinitem
+          (click)="navigateToCryptoChart(item.coinName)"
           coinImage="{{item.coinImage}}"
           coinName="{{item.coinName}}"
           trending="{{item.trending}}"

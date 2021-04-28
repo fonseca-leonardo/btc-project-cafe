@@ -61,4 +61,10 @@ export class Tab1Page {
   ];
 
   constructor() {}
+
+  navigateToCryptoChart(coinName: string) {
+    console.log(
+      `Navegar para detalhe da tela de gráficos da moeda - ${coinName}`
+    );
+  }
 }
