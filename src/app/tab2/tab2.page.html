@@ -1,27 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Seu extrato
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
 <ion-content [fullscreen]="true" class="ion-padding ion-text-center">
+  <img id="background-image" src="../../assets/arrow-up-background.png"/>
   <ion-card color="white">
-  <ion-card-content color="white">
-  <ion-toolbar >
-    <ion-item>
-<ion-icon slot = "icon-only">
-  
-  </ion-icon>
-    <ion-searchbar (ionChange)="search($event)">
+    <ion-icon slot = "icon-only"></ion-icon>
+    <ion-searchbar (ionChange)="pesquisar($event)"></ion-searchbar>
+  </ion-card>
 
-
-    </ion-searchbar>
-  </ion-item>
-</ion-toolbar>
-</ion-card-content>  
-</ion-card>
- 
-<h1>
-    {{currentValue | currency:'BRL'}}
-  </h1>
-  <h2>
-    Total: {{maxValue | currency:'BRL' }}
-  </h2>
-  
   <ion-row class="ion-justify-content-center">
     <ion-col size="auto">
     </ion-col>
@@ -40,32 +33,16 @@
       <ion-button (click)="increment()" fill="clear" color="light">
       <ion-icon slot="icon-only" name="download-outline" white></ion-icon>
     </ion-button>
-  </ion-col>  
+  </ion-col>
 </ion-row>
 
- <ion-list class="ion-no-padding ion-margin-top">
-   <ion-item color="white" *ngFor="let transaction of transactions">
-     <ion-label>
-       <ion-row>
-       <ion-col>{{transaction.value | currency:'BRL'}}</ion-col>
-       <!-- <ion-col>Value in BTC</ion-col> -->
-       <ion-col size="auto">{{transaction.date | date:'d/M/Y - H:mm'}}h</ion-col>
-      </ion-row>
-     </ion-label>
-   </ion-item>
- </ion-list> 
-
- <ul class="extratodetails">
-    <!-- <ion-row>  -->
-     
-   <li *ngFor="let item of coins2">
-     <app-extratodetails
-     coinImage="{{item.coinImage}}"
-     coinName="{{item.coinName}}"
-     ></app-extratodetails>
-   </li>
-  
-   <!-- </ion-row>  -->
- </ul>
+ <ion-list class="ion-no-padding ion-margin-top" *ngIf="transactionsToShow.length > 0" >
+    <app-extratodetails *ngFor="let transaction of transactionsToShow"
+    cryptoType="{{transaction.cryptoType}}"
+    date="{{transaction.date}}"
+    value="{{transaction.value}}"
+    ></app-extratodetails>
+ </ion-list>
 </ion-content>
+
 

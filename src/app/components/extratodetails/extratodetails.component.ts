@@ -7,13 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExtratoDetailsComponent implements OnInit {
   @Input()
-  coinImage: string;
+  cryptoType: string;
 
   @Input()
-  coinName: string;
+  date: string;
 
   @Input()
-  coinQTD: number;
+  value: number;
 
   constructor() {}
 

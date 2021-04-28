@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 
 interface Transaction {
   value: number;
-  date: Date;
+  date: string;
+  cryptoType: 'BTC' | 'ETH' | 'LTC';
 }
 
 interface coins {
@@ -17,63 +18,69 @@ interface coins {
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-  public coins: string[] = [
-    'BTC Bitcoin',
-    'ETH Etherium',
-    'DGE DogeCoin',
-    'LTC LiteCoin',
+  public transactions: Transaction[] = [
+    {
+      cryptoType: 'BTC',
+      date: this.formatDate(new Date()),
+      value: 100.12,
+    },
+    {
+      cryptoType: 'BTC',
+      date: this.formatDate(new Date()),
+      value: -12.16,
+    },
+    {
+      cryptoType: 'ETH',
+      date: this.formatDate(new Date()),
+      value: 51.0,
+    },
+    {
+      cryptoType: 'LTC',
+      date: this.formatDate(new Date()),
+      value: 34.37,
+    },
+    {
+      cryptoType: 'ETH',
+      date: this.formatDate(new Date()),
+      value: -34.37,
+    },
   ];
 
-  public coins2: coins[] = [
-    {
-      coinImage: '../../../assets/bitcoin-coincard.png',
-      coinName: 'BTC - BITCOIN',
-    },
-    {
-      coinImage: '../../../assets/ethereum-coincard.png',
-      coinName: 'ETH - ETHERIUM',
-    },
-    {
-      coinImage: '../../../assets/litecoin-coincard.png',
-      coinName: 'LTC - LITECOIN',
-    },
-  ];
-
-  public coinsFilter: string[] = this.coins;
+  public transactionsToShow: Transaction[] = this.transactions;
 
   constructor() {}
 
   ngOnInit() {}
 
   public pesquisar(ev: CustomEvent) {
-    let val = ev.detail.value;
-    if (val && val.trim() !== '') {
-      this.coinsFilter = this.coins.filter(
-        (term) => term.toLocaleLowerCase().indexOf(val.toLowerCase()) > -1
+    let val: string = ev.detail.value;
+    if (val.length === 0) {
+      this.transactionsToShow = this.transactions;
+    } else {
+      this.transactionsToShow = this.transactions.filter(
+        (transaction) =>
+          transaction.cryptoType.toLocaleLowerCase() === val.toLowerCase()
       );
-    } else this.coinsFilter = this.coins;
+    }
   }
 
   public currentValue = 0;
   public maxValue = 0;
   public selectedValue = 0;
 
-  public transactions: Transaction[] = [
-    // {
-    //   value: 500,
-    //   date: new Date(),
-    // },
-  ];
-
   public increment() {
-    this.currentValue += this.selectedValue;
-    this.maxValue = Math.max(this.maxValue, this.currentValue);
+    if (this.selectedValue !== 0) {
+      this.transactions.unshift({
+        value: this.selectedValue,
+        date: this.formatDate(new Date()),
+        cryptoType: 'BTC',
+      });
 
-    this.transactions.push({
-      value: this.selectedValue,
-      date: new Date(),
-    });
+      this.selectedValue = 0;
+    }
+  }
 
-    this.selectedValue = 0;
+  formatDate(date: Date): string {
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   }
 }
