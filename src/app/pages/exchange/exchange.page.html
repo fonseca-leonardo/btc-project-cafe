@@ -1,0 +1,50 @@
+<ion-header  [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Trocar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h2>Bitcoins</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input placeholder="Quantidade" (input)="onChange($event.target.value)" type="number" ></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <h1> = </h1>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h2>Ethereum</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span>1 BTC = {{etherPrice}} ETH</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="calculatedValue">Total {{etherCalculated}} ETH</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="rateValue">Taxa {{rateValue}} BRL</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-grid>
+    <button (click)="onSubmit()">Confirmar</button>
+  </ion-grid>
+</ion-content>

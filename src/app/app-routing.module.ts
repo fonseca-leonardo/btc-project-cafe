@@ -30,7 +30,11 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
+  },  {
+    path: 'exchange',
+    loadChildren: () => import('./pages/exchange/exchange.module').then( m => m.ExchangePageModule)
   },
+
 ];
 @NgModule({
   imports: [

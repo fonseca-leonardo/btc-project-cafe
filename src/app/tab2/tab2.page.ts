@@ -1,4 +1,3 @@
-import { DomElementSchemaRegistry } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
@@ -9,51 +8,37 @@ interface Transaction {
   cryptoType: 'BTC' | 'ETH' | 'LTC';
 }
 
-interface coins {
-  coinImage: string;
-
-  coinName: string;
-}
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page implements OnInit {
-  public transactions: Transaction[] = [
-    {
-      cryptoType: 'BTC',
-      date: this.formatDate(new Date()),
-      value: 100.12,
-    },
-    {
-      cryptoType: 'BTC',
-      date: this.formatDate(new Date()),
-      value: -12.16,
-    },
-    {
-      cryptoType: 'ETH',
-      date: this.formatDate(new Date()),
-      value: 51.0,
-    },
-    {
-      cryptoType: 'LTC',
-      date: this.formatDate(new Date()),
-      value: 34.37,
-    },
-    {
-      cryptoType: 'ETH',
-      date: this.formatDate(new Date()),
-      value: -34.37,
-    },
-  ];
+  public transactions: Transaction[] = [];
 
   public transactionsToShow: Transaction[] = this.transactions;
 
   constructor(private storage: Storage, private router: Router) {}
+
   async ngOnInit(): Promise<void> {
     if (!(await this.storage.get('token'))) {
       this.router.navigate['/'];
+    }
+
+    const storageTransactions = await this.storage.get('transactions');
+
+    if (storageTransactions) {
+      this.transactions = storageTransactions;
+      this.transactionsToShow = storageTransactions;
+    }
+  }
+
+  public async refresh() {
+    const storageTransactions = await this.storage.get('transactions');
+
+    if (storageTransactions) {
+      this.transactions = storageTransactions;
+      this.transactionsToShow = storageTransactions;
     }
   }
 
@@ -82,6 +67,8 @@ export class Tab2Page implements OnInit {
       });
 
       this.selectedValue = 0;
+
+      this.storage.set('transactions', this.transactions);
     }
   }
 
