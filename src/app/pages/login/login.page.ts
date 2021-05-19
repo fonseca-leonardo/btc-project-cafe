@@ -11,6 +11,7 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  condition: boolean = false;
   user: UserLoginData = {
     nickname: '',
     password: '',
@@ -30,11 +31,13 @@ export class LoginPage implements OnInit {
   }
 
   Login() {
-    this.UserService.userLogin(this.user).subscribe(async (e) => {
-      await this.storage.set('token', e.token);
-      console.log(await this.storage.get('token'));
-
-      this.router.navigate(['/tabs/tab1']);
-    });
+    this.condition = true;
+    this.UserService.userLogin(this.user)
+      .subscribe(async (e) => {
+        await this.storage.set('token', e.token);
+        this.router.navigate(['/tabs/tab1']);
+        this.condition = false;
+      })
+      .add(() => (this.condition = false));
   }
 }

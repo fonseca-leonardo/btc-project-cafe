@@ -23,8 +23,8 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   recoveryAccount() {
-    this.userService.userRecoveryAccount(this.email).subscribe(() => {
-      this.router.navigate(['/']);
+    this.userService.userRecoveryAccount(this.email).subscribe((e) => {
+      console.log(e);
     });
   }
 }

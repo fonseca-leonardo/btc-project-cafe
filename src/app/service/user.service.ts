@@ -47,6 +47,15 @@ export class UserService {
     );
   }
 
+  userRecoveryPassword(token: string, newPassword: string): Observable<string> {
+    const url = this.baseUrl + '/reset-password';
+
+    return this.http.post(url, { token, newPassword }).pipe(
+      map((obj: any) => obj),
+      catchError((e) => this.errorHandler('Erro', e))
+    );
+  }
+
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,

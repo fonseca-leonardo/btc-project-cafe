@@ -47,4 +47,19 @@
       >
     </footer>
   </main>
+  <div *ngIf="condition; then thenBlock"></div>
+  <ng-template #thenBlock>
+    <div class="modal">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </ng-template>
 </ion-content>
