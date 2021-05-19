@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>deposit</ion-title>
+    <ion-title>Deposito</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ngx-qrcode
-    [elementType]="elementType"
-    [value]="value"
-    cssClass="aclass"
-    errorCorrectionLevel="L"
-  >
-  </ngx-qrcode>
+<ion-content class="ion-padding">
+  <main class="centralize">
+    <div>
+      <h2 style="text-align: center">Deposite as crypto neste endereço</h2>
+      <img src="../../../assets/qr-code.png" alt="qrcode" />
+      <h3 style="text-align: center">{{encodedData}}</h3>
+    </div>
+  </main>
 </ion-content>
