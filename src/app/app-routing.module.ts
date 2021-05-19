@@ -32,6 +32,25 @@ const routes: Routes = [
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
   {
+    path: 'exchange',
+    loadChildren: () =>
+      import('./pages/exchange/exchange.module').then(
+        (m) => m.ExchangePageModule
+      ),
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () =>
+      import('./pages/forgot-password/forgot-password.module').then(
+        (m) => m.ForgotPasswordPageModule
+      ),
+  },
+  {
+    path: 'tabs',
+    loadChildren: () =>
+      import('./tabs/tabs.module').then((m) => m.TabsPageModule),
+  },
+  {
     path: 'resetPassword/:token',
     loadChildren: () =>
       import('./pages/reset-password/reset-password.module').then(

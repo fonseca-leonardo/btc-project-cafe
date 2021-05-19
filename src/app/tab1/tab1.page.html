@@ -29,5 +29,16 @@
     </li>
   </ul>
 
-  <button (click)="deposit()">Deposito</button>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button id="deposit-button" color="primary" class="button" (click)="navigate('deposit')">Depositar</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button  color="secondary" class="button" (click)="navigate('exchange')">Trocar</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

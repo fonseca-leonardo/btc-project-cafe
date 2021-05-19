@@ -68,8 +68,8 @@ export class Tab1Page implements OnInit {
     }
   }
 
-  deposit() {
-    this.router.navigate(['tabs/tab1/deposit']);
+  navigate(to: string) {
+    this.router.navigate(['tabs/tab1/' + to]);
   }
 
   navigateToCryptoChart(coinName: string) {
