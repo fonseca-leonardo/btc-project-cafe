@@ -1,22 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { IonicModule } from '@ionic/angular';
-
 import { DepositPageRoutingModule } from './deposit-routing.module';
-
 import { DepositPage } from './deposit.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    DepositPageRoutingModule,
-    NgxQRCodeModule,
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, DepositPageRoutingModule],
   declarations: [DepositPage],
 })
 export class DepositPageModule {}
