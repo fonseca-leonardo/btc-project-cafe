@@ -64,8 +64,12 @@ export class Tab1Page implements OnInit {
   constructor(private storage: Storage, private router: Router) {}
   async ngOnInit(): Promise<void> {
     if (!(await this.storage.get('token'))) {
-      this.router.navigate['/'];
+      this.router.navigate(['/']);
     }
+  }
+
+  deposit() {
+    this.router.navigate(['tabs/tab1/deposit']);
   }
 
   navigateToCryptoChart(coinName: string) {

@@ -1,33 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Minha Conta
-    </ion-title>
+    <ion-title> Minha Conta </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <img id="background-image" src="../../assets/point-sphere.png"/>
-    <ul id="coin-card-list">
-      <li *ngFor="let coin of userCoins">
-        <app-coincard
-          backgroundColor="{{coin.backgroundColor}}"
-          coinImage="{{coin.coinImage}}"
-          coinName="{{coin.coinName}}"
-          quantity="{{coin.quantity}}"
-          fontColor="{{coin.fontColor}}"
-        ></app-coincard>
-      </li>
-    </ul>
-    <ul id="coin-item-list">
-      <li *ngFor="let item of coinItems">
-        <app-coinitem
-          (click)="navigateToCryptoChart(item.coinName)"
-          coinImage="{{item.coinImage}}"
-          coinName="{{item.coinName}}"
-          trending="{{item.trending}}"
-          coinPrice="{{item.price}}"
-        ></app-coinitem>
-      </li>
-    </ul>
+  <img id="background-image" src="../../assets/point-sphere.png" />
+  <ul id="coin-card-list">
+    <li *ngFor="let coin of userCoins">
+      <app-coincard
+        backgroundColor="{{coin.backgroundColor}}"
+        coinImage="{{coin.coinImage}}"
+        coinName="{{coin.coinName}}"
+        quantity="{{coin.quantity}}"
+        fontColor="{{coin.fontColor}}"
+      ></app-coincard>
+    </li>
+  </ul>
+  <ul id="coin-item-list">
+    <li *ngFor="let item of coinItems">
+      <app-coinitem
+        (click)="navigateToCryptoChart(item.coinName)"
+        coinImage="{{item.coinImage}}"
+        coinName="{{item.coinName}}"
+        trending="{{item.trending}}"
+        coinPrice="{{item.price}}"
+      ></app-coinitem>
+    </li>
+  </ul>
+
+  <button (click)="deposit()">Deposito</button>
 </ion-content>
