@@ -17,6 +17,8 @@ export class RegistrationPage implements OnInit {
     password: '',
     passwordConfirmation: '',
   };
+  condition: boolean = false;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -35,8 +37,16 @@ export class RegistrationPage implements OnInit {
     if (this.createUser.password !== this.createUser.passwordConfirmation)
       return;
 
-    this.userService.userCreate(this.createUser).subscribe((e) => {
-      this.router.navigate(['/login']);
-    });
+    this.condition = true;
+
+    this.userService
+      .userCreate(this.createUser)
+      .subscribe((e) => {
+        this.condition = false;
+        this.router.navigate(['/login']);
+      })
+      .add(() => {
+        this.condition = false;
+      });
   }
 }
