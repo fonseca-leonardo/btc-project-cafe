@@ -1,5 +1,7 @@
 import { DomElementSchemaRegistry } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 interface Transaction {
   value: number;
@@ -17,7 +19,7 @@ interface coins {
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
   public transactions: Transaction[] = [
     {
       cryptoType: 'BTC',
@@ -48,9 +50,12 @@ export class Tab2Page {
 
   public transactionsToShow: Transaction[] = this.transactions;
 
-  constructor() {}
-
-  ngOnInit() {}
+  constructor(private storage: Storage, private router: Router) {}
+  async ngOnInit(): Promise<void> {
+    if (!(await this.storage.get('token'))) {
+      this.router.navigate['/'];
+    }
+  }
 
   public pesquisar(ev: CustomEvent) {
     let val: string = ev.detail.value;

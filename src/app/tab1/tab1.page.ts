@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 interface ICoinsCardProps {
   backgroundColor: string;
@@ -26,7 +27,7 @@ interface ICoinsItemsProps {
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
   public userCoins: Array<ICoinsCardProps> = [
     {
       backgroundColor:
@@ -60,7 +61,12 @@ export class Tab1Page {
     },
   ];
 
-  constructor() {}
+  constructor(private storage: Storage, private router: Router) {}
+  async ngOnInit(): Promise<void> {
+    if (!(await this.storage.get('token'))) {
+      this.router.navigate['/'];
+    }
+  }
 
   navigateToCryptoChart(coinName: string) {
     console.log(

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,9 +10,17 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ForgotPasswordPage implements OnInit {
   email: string;
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private location: Location
+  ) {}
 
   ngOnInit() {}
+
+  backToOrigin() {
+    this.location.back();
+  }
 
   recoveryAccount() {
     this.userService.userRecoveryAccount(this.email).subscribe(() => {

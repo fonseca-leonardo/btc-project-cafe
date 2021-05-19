@@ -1,7 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-
 import { UserLoginData } from 'src/app/model/userLoginModel.ngtypecheck';
 import { UserService } from 'src/app/service/user.service';
 
@@ -19,16 +19,21 @@ export class LoginPage implements OnInit {
   constructor(
     private UserService: UserService,
     private router: Router,
-    private storage: Storage
+    private storage: Storage,
+    private location: Location
   ) {}
 
-  async ngOnInit() {
-    await this.storage.create();
+  ngOnInit() {}
+
+  backToOrigin() {
+    this.location.back();
   }
 
   Login() {
     this.UserService.userLogin(this.user).subscribe(async (e) => {
       await this.storage.set('token', e.token);
+      console.log(await this.storage.get('token'));
+
       this.router.navigate(['/tabs/tab1']);
     });
   }

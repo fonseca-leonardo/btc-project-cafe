@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 @Component({
@@ -99,8 +100,13 @@ export class Tab3Page implements OnInit {
 
   public chartLabels: Label[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private storage: Storage) {
     this.loadData();
+  }
+  async ngOnInit(): Promise<void> {
+    if (!(await this.storage.get('token'))) {
+      this.router.navigate['/'];
+    }
   }
 
   loadData() {
@@ -116,6 +122,4 @@ export class Tab3Page implements OnInit {
       this.ltcChartData[0].data.push(data.value);
     });
   }
-
-  ngOnInit(): void {}
 }

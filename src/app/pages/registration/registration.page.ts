@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserCreateData } from 'src/app/model/userCreateModel.ngtypecheck';
@@ -16,9 +17,17 @@ export class RegistrationPage implements OnInit {
     password: '',
     passwordConfirmation: '',
   };
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private location: Location
+  ) {}
 
   ngOnInit() {}
+
+  backToOrigin() {
+    this.location.back();
+  }
 
   register() {
     if (this.createUser.email !== this.createUser.emailConfirmation) return;
