@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DepositPage } from '../pages/deposit/deposit.page';
+import { DetailPage } from '../pages/detail/detail.page';
 import { ExchangePage } from '../pages/exchange/exchange.page';
 import { Tab1Page } from './tab1.page';
 

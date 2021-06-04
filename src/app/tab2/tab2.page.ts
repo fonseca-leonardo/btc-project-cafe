@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { UserData, UserService } from '../service/user.service';
 
 interface Transaction {
   value: number;
   date: string;
+  userData: UserData;
   cryptoType: 'BTC' | 'ETH' | 'LTC';
 }
 
@@ -18,28 +20,58 @@ export class Tab2Page implements OnInit {
 
   public transactionsToShow: Transaction[] = this.transactions;
 
-  constructor(private storage: Storage, private router: Router) {}
+  constructor(
+    private storage: Storage,
+    private router: Router,
+    private userService: UserService
+  ) {}
+
+  async filterStorageTransaction(storageTransaction: Transaction) {
+    const userData = await this.userService
+      .getUserName(await this.storage.get('token'))
+      .toPromise();
+    if (
+      storageTransaction.userData.userReturn.email === userData.userReturn.email
+    ) {
+      return storageTransaction;
+    }
+  }
+
+  async filterTransactions() {
+    const storageTransactions = (await this.storage.get(
+      'transactions'
+    )) as Transaction[];
+
+    let filterStorageTransactions: Transaction[] = [];
+
+    if (storageTransactions) {
+      for (const storageTransaction of storageTransactions) {
+        const formatStorageTransaction = await this.filterStorageTransaction(
+          storageTransaction
+        );
+
+        if (formatStorageTransaction) {
+          filterStorageTransactions.push(formatStorageTransaction);
+        }
+      }
+      this.transactions = storageTransactions;
+    }
+
+    if (filterStorageTransactions[0] !== undefined) {
+      this.transactionsToShow = filterStorageTransactions;
+    }
+  }
 
   async ngOnInit(): Promise<void> {
     if (!(await this.storage.get('token'))) {
       this.router.navigate['/'];
     }
 
-    const storageTransactions = await this.storage.get('transactions');
-
-    if (storageTransactions) {
-      this.transactions = storageTransactions;
-      this.transactionsToShow = storageTransactions;
-    }
+    this.filterTransactions();
   }
 
   public async refresh() {
-    const storageTransactions = await this.storage.get('transactions');
-
-    if (storageTransactions) {
-      this.transactions = storageTransactions;
-      this.transactionsToShow = storageTransactions;
-    }
+    this.filterTransactions();
   }
 
   public pesquisar(ev: CustomEvent) {
@@ -58,11 +90,14 @@ export class Tab2Page implements OnInit {
   public maxValue = 0;
   public selectedValue = 0;
 
-  public increment() {
+  public async increment() {
     if (this.selectedValue !== 0) {
       this.transactions.unshift({
         value: this.selectedValue,
         date: this.formatDate(new Date()),
+        userData: await this.userService
+          .getUserName(await this.storage.get('token'))
+          .toPromise(),
         cryptoType: 'BTC',
       });
 
