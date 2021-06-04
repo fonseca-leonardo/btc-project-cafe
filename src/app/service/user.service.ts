@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -7,6 +7,15 @@ import { environment } from 'src/environments/environment';
 import { UserCreateData } from '../model/userCreateModel.ngtypecheck';
 import { UserLoginData } from '../model/userLoginModel.ngtypecheck';
 import { ResponseLogin } from '../model/userResponseModel.ngtypecheck';
+
+interface UserReturn {
+  nickname: string;
+  email: string;
+}
+
+export interface UserData {
+  userReturn: UserReturn;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +44,17 @@ export class UserService {
       catchError((e) =>
         this.errorHandler('Não foi possível criar uma conta', e)
       )
+    );
+  }
+
+  getUserName(token: string): Observable<UserData> {
+    const url = this.baseUrl + '/auth';
+
+    const authorization = 'bearer ' + token;
+
+    return this.http.post(url, { authorization }).pipe(
+      map((obj: any) => obj),
+      catchError((e) => this.errorHandler('Erro', e))
     );
   }
 

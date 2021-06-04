@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { Tab3Page } from './tab3.page';
+import { DetailPage } from '../pages/detail/detail.page';
 
 const routes: Routes = [
   {
@@ -8,8 +10,8 @@ const routes: Routes = [
     component: Tab3Page,
   },
   {
-    path: '/detail',
-    component: Tab3Page,
+    path: 'detail/:crypto',
+    component: DetailPage,
   },
 ];
 

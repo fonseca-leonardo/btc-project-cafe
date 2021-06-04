@@ -73,8 +73,6 @@ export class Tab1Page implements OnInit {
   }
 
   navigateToCryptoChart(coinName: string) {
-    console.log(
-      `Navegar para detalhe da tela de gráficos da moeda - ${coinName}`
-    );
+    this.router.navigate(['tabs/tab3/detail/' + coinName]);
   }
 }
