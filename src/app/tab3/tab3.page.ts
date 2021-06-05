@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -121,5 +122,9 @@ export class Tab3Page implements OnInit {
       this.ethChartData[0].data.push(data.value);
       this.ltcChartData[0].data.push(data.value);
     });
+  }
+
+  navigateToCryptoChart(coinName: string) {
+    this.router.navigate(['tabs/tab3/detail/' + coinName]);
   }
 }

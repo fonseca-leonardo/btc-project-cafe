@@ -8,7 +8,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="ion-padding">
-    <ion-card>
+    <ion-card (click)="navigateToCryptoChart('BITCOIN')">
       <ion-card-header>
         BTC em BRL
       </ion-card-header>
@@ -16,7 +16,7 @@
         <canvas baseChart [datasets]="btcChartData" [colors]="btcChartColor" [options]="chartOptions" [chartType]="chartType" [labels]="chartLabels"></canvas>
       </ion-card-content>
     </ion-card>
-    <ion-card>
+    <ion-card (click)="navigateToCryptoChart('ETHEREUM')">
       <ion-card-header>
         ETH em BRL
       </ion-card-header>
@@ -24,7 +24,7 @@
         <canvas baseChart [datasets]="ethChartData" [colors]="ethChartColor" [chartType]="chartType" [labels]="chartLabels"></canvas>
       </ion-card-content>
     </ion-card>
-    <ion-card>
+    <ion-card (click)="navigateToCryptoChart('LITECOIN')">
       <ion-card-header>
         LTC em BRL
       </ion-card-header>

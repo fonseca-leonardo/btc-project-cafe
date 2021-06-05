@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detail</ion-title>
+    <div class="header">
+      <ion-icon
+        (click)="goBack()"
+        class="back-button"
+        name="arrow-back-outline"></ion-icon>
+        <ion-title>Detalhe</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="ion-padding">
+    <ion-card class="detail-card">
+      <h1>{{currentCrypto.name}}</h1>
+      <span class="subtitle">Valor Atual</span>
+      <span>{{parseToCurrency(currentCrypto.currentValue)}}</span>
+      <span class="subtitle">Unidades transacionadas</span>
+      <span>{{currentCrypto.totalTrade}}</span>
+    </ion-card>
+    <ion-card>
+      <canvas
+        baseChart
+        [datasets]="currentCrypto.dataset"
+        [colors]="currentCrypto.color"
+        [chartType]="chartType"
+        [labels]="chartLabels"></canvas>
+    </ion-card>
+  </div>
 </ion-content>

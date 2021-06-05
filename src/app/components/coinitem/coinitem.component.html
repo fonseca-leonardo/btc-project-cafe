@@ -10,7 +10,7 @@
       <ion-row class="ion-align-items-end" >
         <ion-icon class="trending-up trending-icon" *ngIf="trending=='up'" name="trending-up-outline"></ion-icon>
         <ion-icon class="trending-down trending-icon" *ngIf="trending=='down'" name="trending-down-outline"></ion-icon>
-        <span>R$ {{coinPrice}}</span>
+        <span>{{parseToCurrency(coinPrice)}}</span>
       </ion-row>
     </ion-col>
     <ion-col size="2">

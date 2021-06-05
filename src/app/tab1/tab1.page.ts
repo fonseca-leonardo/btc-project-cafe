@@ -41,7 +41,7 @@ export class Tab1Page implements OnInit {
       backgroundColor: '#FFF',
       fontColor: '#303962',
       coinImage: '../../../assets/ethereum-coincard.png',
-      coinName: 'ETHERIUM',
+      coinName: 'ETHEREUM',
       quantity: 0.06624,
     },
   ];
@@ -55,7 +55,7 @@ export class Tab1Page implements OnInit {
     },
     {
       coinImage: '../../../assets/ethereum-coincard.png',
-      coinName: 'ETHERIUM',
+      coinName: 'ETHEREUM',
       price: 13504,
       trending: 'down',
     },
