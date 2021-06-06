@@ -36,14 +36,13 @@ export class LoginPage implements OnInit {
 
   async Login() {
     this.condition = true;
-    const userReturn = await this.UserService.getUserName(
-      await this.storage.get('token')
-    ).toPromise();
 
-    console.log(userReturn);
     this.UserService.userLogin(this.user)
       .subscribe(async (e) => {
         await this.storage.set('token', e.token);
+        const userReturn = await this.UserService.getUserName(
+          await this.storage.get('token')
+        ).toPromise();
         await this.storage.set('email', userReturn.userReturn.email);
         await this.router.navigate(['/tabs/tab1']);
         this.condition = false;
