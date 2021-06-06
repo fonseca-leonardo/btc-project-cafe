@@ -58,6 +58,15 @@ export class UserService {
     );
   }
 
+  refreshToken(token: string): Observable<string> {
+    const url = this.baseUrl + '/refresh-auth';
+
+    return this.http.post(url, { token }).pipe(
+      map((obj: any) => obj),
+      catchError((e) => this.errorHandler('Erro', e))
+    );
+  }
+
   userRecoveryAccount(email: string): Observable<string> {
     const url = this.baseUrl + '/forgot-password';
 

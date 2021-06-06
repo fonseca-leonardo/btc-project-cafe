@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { UserService } from '../service/user.service';
 
 interface ICoinsCardProps {
   backgroundColor: string;
@@ -61,10 +62,23 @@ export class Tab1Page implements OnInit {
     },
   ];
 
-  constructor(private storage: Storage, private router: Router) {}
+  constructor(
+    private storage: Storage,
+    private router: Router,
+    private userService: UserService
+  ) {}
   async ngOnInit(): Promise<void> {
+    const newToken = this.userService
+      .refreshToken(await this.storage.get('token'))
+      .subscribe((e) => {});
     if (!(await this.storage.get('token'))) {
-      this.router.navigate(['/']);
+      await this.storage.remove('token');
+      this.router.navigate['/'];
+    } else {
+      await this.storage.set(
+        'token',
+        this.userService.refreshToken(await this.storage.get('token'))
+      );
     }
   }
 

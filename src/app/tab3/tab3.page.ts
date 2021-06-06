@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-tab3',
@@ -101,12 +102,22 @@ export class Tab3Page implements OnInit {
 
   public chartLabels: Label[] = [];
 
-  constructor(private router: Router, private storage: Storage) {
+  constructor(
+    private router: Router,
+    private storage: Storage,
+    private userService: UserService
+  ) {
     this.loadData();
   }
   async ngOnInit(): Promise<void> {
     if (!(await this.storage.get('token'))) {
+      await this.storage.remove('token');
       this.router.navigate['/'];
+    } else {
+      await this.storage.set(
+        'token',
+        this.userService.refreshToken(await this.storage.get('token'))
+      );
     }
   }
 

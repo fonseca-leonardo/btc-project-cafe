@@ -64,7 +64,13 @@ export class Tab2Page implements OnInit {
 
   async ngOnInit(): Promise<void> {
     if (!(await this.storage.get('token'))) {
+      await this.storage.remove('token');
       this.router.navigate['/'];
+    } else {
+      await this.storage.set(
+        'token',
+        this.userService.refreshToken(await this.storage.get('token'))
+      );
     }
 
     this.filterTransactions();
