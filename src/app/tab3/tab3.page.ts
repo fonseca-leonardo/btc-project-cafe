@@ -118,7 +118,7 @@ export class Tab3Page implements OnInit {
         .toPromise();
 
       if (!newToken) {
-        await this.storage.remove('token');
+        await this.storage.set('token', '');
         this.router.navigateByUrl('/login');
       } else {
         await this.storage.set(

@@ -22,11 +22,12 @@ export class CoinitemComponent implements OnInit {
 
   ngOnInit() {}
 
-  parseToCurrency(value: number) {
+  parseToCurrency(value: number | string) {
+    const formatValue = Number(value);
     const formatter = new Intl.NumberFormat('pt-br', {
       style: 'currency',
       currency: 'BRL',
     });
-    return formatter.format(value);
+    return formatter.format(formatValue);
   }
 }

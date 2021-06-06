@@ -70,13 +70,13 @@ export class Tab1Page implements OnInit {
   async ngOnInit(): Promise<void> {
     const oldToken = await this.storage.get('token');
 
-    if (oldToken) {
+    if (oldToken !== '') {
       const newToken = await this.userService
         .refreshToken(await this.storage.get('token'))
         .toPromise();
 
       if (!newToken) {
-        await this.storage.remove('token');
+        await this.storage.set('token', '');
         this.router.navigateByUrl('/login');
       } else {
         await this.storage.set(

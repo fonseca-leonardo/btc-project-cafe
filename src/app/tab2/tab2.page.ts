@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { UserData, UserService } from '../service/user.service';
@@ -71,7 +72,7 @@ export class Tab2Page implements OnInit {
         .toPromise();
 
       if (!newToken) {
-        await this.storage.remove('token');
+        await this.storage.set('token', '');
         this.router.navigateByUrl('/login');
       } else {
         await this.storage.set(
@@ -92,8 +93,8 @@ export class Tab2Page implements OnInit {
     this.filterTransactions();
   }
 
-  public pesquisar(ev: CustomEvent) {
-    let val: string = ev.detail.value;
+  public pesquisar(ev: Event) {
+    let val: string = (ev.target as HTMLInputElement).value;
     if (val.length === 0) {
       this.transactionsToShow = this.transactions;
     } else {
@@ -106,12 +107,20 @@ export class Tab2Page implements OnInit {
 
   public currentValue = 0;
   public maxValue = 0;
-  public selectedValue = 0;
+  public selectedValue: string = '';
 
   public async increment() {
-    if (this.selectedValue !== 0) {
+    const reg = new RegExp('^-?[1-9]d{0,2}(.d*)?$');
+
+    if (!reg.test(this.selectedValue)) {
+      this.selectedValue = '';
+      return;
+    }
+    const numberSelectedValue = Number(this.selectedValue);
+
+    if (numberSelectedValue !== 0) {
       this.transactions.unshift({
-        value: this.selectedValue,
+        value: numberSelectedValue,
         date: this.formatDate(new Date()),
         userData: await this.userService
           .getUserName(await this.storage.get('token'))
@@ -119,7 +128,7 @@ export class Tab2Page implements OnInit {
         cryptoType: 'BTC',
       });
 
-      this.selectedValue = 0;
+      this.selectedValue = '';
 
       this.storage.set('transactions', this.transactions);
     }
