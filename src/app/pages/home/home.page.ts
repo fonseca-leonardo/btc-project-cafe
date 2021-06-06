@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +6,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor(private storage: Storage) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.storage.set('token', '');
-    this.storage.set('transactions', {});
-  }
+  ngOnInit() {}
 }

@@ -7,7 +7,7 @@ import { UserData, UserService } from '../service/user.service';
 interface Transaction {
   value: number;
   date: string;
-  userData: UserData;
+  email: string;
   cryptoType: 'BTC' | 'ETH' | 'LTC';
 }
 
@@ -28,12 +28,9 @@ export class Tab2Page implements OnInit {
   ) {}
 
   async filterStorageTransaction(storageTransaction: Transaction) {
-    const userData = await this.userService
-      .getUserName(await this.storage.get('token'))
-      .toPromise();
-    if (
-      storageTransaction.userData.userReturn.email === userData.userReturn.email
-    ) {
+    const email = await this.storage.get('email');
+
+    if (storageTransaction.email === email) {
       return storageTransaction;
     }
   }
@@ -73,6 +70,7 @@ export class Tab2Page implements OnInit {
 
       if (!newToken) {
         await this.storage.set('token', '');
+        await this.storage.set('email', '');
         this.router.navigateByUrl('/login');
       } else {
         await this.storage.set(
@@ -83,6 +81,7 @@ export class Tab2Page implements OnInit {
         );
       }
     } else {
+      await this.storage.set('email', '');
       this.router.navigateByUrl('/login');
     }
 
@@ -110,7 +109,9 @@ export class Tab2Page implements OnInit {
   public selectedValue = '0';
 
   public async increment() {
-    const reg = new RegExp('^-?[1-9]d{0,2}(.d*)?$');
+    const reg = new RegExp(
+      '^-?([0]{1}.{1}[0-9]+|[1-9]{1}[0-9]*.{1}[0-9]+|[0-9]+|0)$'
+    );
 
     if (!reg.test(this.selectedValue)) {
       this.selectedValue = '0';
@@ -123,9 +124,7 @@ export class Tab2Page implements OnInit {
       this.transactions.unshift({
         value: numberSelectedValue,
         date: this.formatDate(new Date()),
-        userData: await this.userService
-          .getUserName(await this.storage.get('token'))
-          .toPromise(),
+        email: await this.storage.get('email'),
         cryptoType: 'BTC',
       });
 
