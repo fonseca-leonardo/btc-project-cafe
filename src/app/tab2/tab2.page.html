@@ -1,50 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Seu extrato
-    </ion-title>
+    <ion-title> Seu extrato </ion-title>
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-content [fullscreen]="true" class="ion-padding ion-text-center">
-  <img id="background-image" src="../../assets/arrow-up-background.png"/>
+  <img id="background-image" src="../../assets/arrow-up-background.png" />
   <ion-card color="white">
-    <ion-icon slot = "icon-only"></ion-icon>
+    <ion-icon slot="icon-only"></ion-icon>
     <ion-searchbar (ionChange)="pesquisar($event)"></ion-searchbar>
   </ion-card>
 
   <ion-row class="ion-justify-content-center">
-    <ion-col size="auto">
-    </ion-col>
+    <ion-col size="auto"> </ion-col>
   </ion-row>
   <ion-row class="ion-aling-items-end">
-  <ion-col>
-  <ion-item color="white">
-    <ion-label position="floating">
-      Valor
-    </ion-label>
-    <ion-input type="number" [(ngModel)]="selectedValue">
-    </ion-input>
-  </ion-item>
-  </ion-col>
-  <ion-col size="auto">
+    <ion-col>
+      <ion-item color="white">
+        <ion-label position="floating"> Valor </ion-label>
+        <ion-input type="number" [(ngModel)]="selectedValue"> </ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="auto">
       <ion-button (click)="increment()" fill="clear" color="light">
-      <ion-icon slot="icon-only" name="download-outline" white></ion-icon>
-    </ion-button>
-  </ion-col>
-</ion-row>
+        <ion-icon
+          slot="icon-only"
+          name="download-outline"
+          class="icon-white"
+        ></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
 
   <ion-button (click)="refresh()">Recarregar</ion-button>
 
- <ion-list class="ion-no-padding ion-margin-top" *ngIf="transactionsToShow.length > 0" >
-    <app-extratodetails *ngFor="let transaction of transactionsToShow"
-    cryptoType="{{transaction.cryptoType}}"
-    date="{{transaction.date}}"
-    value="{{transaction.value}}"
+  <ion-list
+    class="ion-no-padding ion-margin-top"
+    *ngIf="transactionsToShow.length > 0"
+  >
+    <app-extratodetails
+      *ngFor="let transaction of transactionsToShow"
+      cryptoType="{{transaction.cryptoType}}"
+      date="{{transaction.date}}"
+      value="{{transaction.value}}"
     ></app-extratodetails>
- </ion-list>
+  </ion-list>
 </ion-content>
-
-

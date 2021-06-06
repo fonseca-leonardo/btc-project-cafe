@@ -1,21 +1,28 @@
 <ion-grid class="container">
   <ion-row class="ion-align-items-center">
     <ion-col size="2">
-      <img src="{{coinImage}}" alt="{{coinName}}"/>
+      <img src="{{ coinImage }}" alt="{{ coinName }}" />
     </ion-col>
-    <ion-col size="8" >
-      <ion-row >
-        <span>{{coinName}}</span>
+    <ion-col size="8">
+      <ion-row>
+        <span>{{ coinName }}</span>
       </ion-row>
-      <ion-row class="ion-align-items-end" >
-        <ion-icon class="trending-up trending-icon" *ngIf="trending=='up'" name="trending-up-outline"></ion-icon>
-        <ion-icon class="trending-down trending-icon" *ngIf="trending=='down'" name="trending-down-outline"></ion-icon>
-        <span>{{parseToCurrency(coinPrice)}}</span>
+      <ion-row class="ion-align-items-end">
+        <ion-icon
+          class="trending-up trending-icon"
+          *ngIf="trending == 'up'"
+          name="trending-up-outline"
+        ></ion-icon>
+        <ion-icon
+          class="trending-down trending-icon"
+          *ngIf="trending == 'down'"
+          name="trending-down-outline"
+        ></ion-icon>
+        <span>{{ parseToCurrency(coinPrice) }}</span>
       </ion-row>
     </ion-col>
     <ion-col size="2">
-      <ion-icon class="goIcon" name="chevron-forward-outline">
-      </ion-icon>
+      <ion-icon class="goIcon" name="chevron-forward-outline"> </ion-icon>
     </ion-col>
   </ion-row>
 </ion-grid>

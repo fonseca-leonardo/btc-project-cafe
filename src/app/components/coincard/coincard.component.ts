@@ -23,7 +23,5 @@ export class CoincardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.quantity);
-  }
+  ngOnInit() {}
 }

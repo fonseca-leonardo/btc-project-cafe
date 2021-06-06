@@ -2,8 +2,12 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { UserLoginData } from 'src/app/model/userLoginModel.ngtypecheck';
 import { UserService } from 'src/app/service/user.service';
+
+interface UserLoginData {
+  nickname: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-login',

@@ -1,6 +1,13 @@
-<ion-header  [translucent]="true">
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Trocar</ion-title>
+    <div class="header">
+      <ion-icon
+        (click)="goBack()"
+        class="back-button"
+        name="arrow-back-outline"
+      ></ion-icon>
+      <ion-title>Trocar</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -14,12 +21,16 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-input placeholder="Quantidade" (input)="onChange($event.target.value)" type="number" ></ion-input>
+          <ion-input
+            placeholder="Quantidade"
+            (input)="onChange($event)"
+            type="number"
+          ></ion-input>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  <h1> = </h1>
+  <h1>=</h1>
   <ion-card>
     <ion-grid>
       <ion-row>
