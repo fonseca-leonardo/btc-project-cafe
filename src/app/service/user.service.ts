@@ -27,6 +27,10 @@ interface UserReturn {
   email: string;
 }
 
+interface TokenReturn {
+  token: string;
+}
+
 export interface UserData {
   userReturn: UserReturn;
 }
@@ -72,7 +76,7 @@ export class UserService {
     );
   }
 
-  refreshToken(token: string): Observable<string> {
+  refreshToken(token: string): Observable<TokenReturn> {
     const url = this.baseUrl + '/refresh-auth';
 
     return this.http.post(url, { token }).pipe(

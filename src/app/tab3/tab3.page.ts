@@ -110,14 +110,26 @@ export class Tab3Page implements OnInit {
     this.loadData();
   }
   async ngOnInit(): Promise<void> {
-    if (!(await this.storage.get('token'))) {
-      await this.storage.remove('token');
-      this.router.navigate['/'];
+    const oldToken = await this.storage.get('token');
+
+    if (oldToken) {
+      const newToken = await this.userService
+        .refreshToken(await this.storage.get('token'))
+        .toPromise();
+
+      if (!newToken) {
+        await this.storage.remove('token');
+        this.router.navigateByUrl('/login');
+      } else {
+        await this.storage.set(
+          'token',
+          await this.userService
+            .refreshToken(await this.storage.get('token'))
+            .toPromise()
+        );
+      }
     } else {
-      await this.storage.set(
-        'token',
-        this.userService.refreshToken(await this.storage.get('token'))
-      );
+      this.router.navigateByUrl('/login');
     }
   }
 
