@@ -13,7 +13,7 @@ export class ExtratoDetailsComponent implements OnInit {
   date: string;
 
   @Input()
-  value: number;
+  value: string | number;
 
   constructor() {}
 

@@ -1,8 +1,16 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserCreateData } from 'src/app/model/userCreateModel.ngtypecheck';
 import { UserService } from 'src/app/service/user.service';
+
+interface UserCreateData {
+  nickname: string;
+  email: string;
+  emailConfirmation: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
 
 @Component({
   selector: 'app-registration',

@@ -7,16 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CoinitemComponent implements OnInit {
   @Input()
-  private coinImage: string;
+  public coinImage: string;
 
   @Input()
-  private coinName: string;
+  public coinName: string;
 
   @Input()
-  private trending: 'up' | 'down';
+  public trending: string;
 
   @Input()
-  private coinPrice: number;
+  public coinPrice: string;
 
   constructor() {}
 

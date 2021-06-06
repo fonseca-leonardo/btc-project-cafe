@@ -4,9 +4,23 @@ import { EMPTY, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
-import { UserCreateData } from '../model/userCreateModel.ngtypecheck';
-import { UserLoginData } from '../model/userLoginModel.ngtypecheck';
-import { ResponseLogin } from '../model/userResponseModel.ngtypecheck';
+
+interface UserCreateData {
+  nickname: string;
+  email: string;
+  emailConfirmation: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
+interface UserLoginData {
+  nickname: string;
+  password: string;
+}
+
+interface ResponseLogin {
+  token: string;
+}
 
 interface UserReturn {
   nickname: string;

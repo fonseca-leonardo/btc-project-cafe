@@ -19,7 +19,7 @@ export class CoincardComponent implements OnInit {
   coinName: string;
 
   @Input()
-  quantity: number;
+  quantity: string;
 
   constructor() {}
 
