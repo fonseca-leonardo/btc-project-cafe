@@ -18,7 +18,13 @@
     <ion-col>
       <ion-item color="white">
         <ion-label position="floating"> Valor </ion-label>
-        <ion-input type="number" [(ngModel)]="selectedValue"> </ion-input>
+        <ion-input
+          type="number"
+          (click)="onClick()"
+          ng-model-options="{ updateOn: 'blur' }"
+          [(ngModel)]="selectedValue"
+        >
+        </ion-input>
       </ion-item>
     </ion-col>
     <ion-col size="auto">

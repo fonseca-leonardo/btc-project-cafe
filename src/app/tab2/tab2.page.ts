@@ -107,13 +107,14 @@ export class Tab2Page implements OnInit {
 
   public currentValue = 0;
   public maxValue = 0;
-  public selectedValue: string = '';
+  public selectedValue = '0';
 
   public async increment() {
     const reg = new RegExp('^-?[1-9]d{0,2}(.d*)?$');
 
     if (!reg.test(this.selectedValue)) {
-      this.selectedValue = '';
+      this.selectedValue = '0';
+
       return;
     }
     const numberSelectedValue = Number(this.selectedValue);
@@ -128,10 +129,14 @@ export class Tab2Page implements OnInit {
         cryptoType: 'BTC',
       });
 
-      this.selectedValue = '';
+      this.selectedValue = '0';
 
       this.storage.set('transactions', this.transactions);
     }
+  }
+
+  onClick() {
+    this.selectedValue = '';
   }
 
   formatDate(date: Date): string {
