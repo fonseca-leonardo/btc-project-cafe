@@ -51,13 +51,13 @@ export class Tab1Page implements OnInit {
     {
       coinImage: '../../../assets/bitcoin-coincard.png',
       coinName: 'BITCOIN',
-      price: 365457,
+      price: 180236.68,
       trending: 'up',
     },
     {
       coinImage: '../../../assets/ethereum-coincard.png',
       coinName: 'ETHEREUM',
-      price: 13504,
+      price: 13500.56,
       trending: 'down',
     },
   ];
