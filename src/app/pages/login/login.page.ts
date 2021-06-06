@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
     this.UserService.userLogin(this.user)
       .subscribe(async (e) => {
         await this.storage.set('token', e.token);
-        this.router.navigate(['/tabs/tab1']);
+        await this.router.navigate(['/tabs/tab1']);
         this.condition = false;
       })
       .add(() => (this.condition = false));
