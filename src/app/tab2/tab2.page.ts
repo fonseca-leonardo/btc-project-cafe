@@ -92,15 +92,25 @@ export class Tab2Page implements OnInit {
     this.filterTransactions();
   }
 
-  public pesquisar(ev: Event) {
+  public async pesquisar(ev: Event) {
     let val: string = (ev.target as HTMLInputElement).value;
+    const verifyEmail = await this.storage.get('email');
+
     if (val.length === 0) {
-      this.transactionsToShow = this.transactions;
+      this.transactionsToShow = this.transactions.filter((transaction) => {
+        if (transaction.email === verifyEmail) {
+          return transaction;
+        }
+      });
     } else {
-      this.transactionsToShow = this.transactions.filter(
-        (transaction) =>
-          transaction.cryptoType.toLocaleLowerCase() === val.toLowerCase()
-      );
+      this.transactionsToShow = this.transactions.filter((transaction) => {
+        if (
+          transaction.cryptoType.toLocaleLowerCase() === val.toLowerCase() &&
+          transaction.email === verifyEmail
+        ) {
+          return transaction;
+        }
+      });
     }
   }
 
