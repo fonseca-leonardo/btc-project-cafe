@@ -54,14 +54,13 @@ export class ExchangePage implements OnInit {
 
   async onSubmit() {
     const transactions = await this.storage.get('transactions');
+    const email = await this.storage.get('email');
 
     if (transactions) {
       transactions.unshift({
         value: this.rateValue * -1,
         date: this.formatDate(new Date()),
-        userData: await this.userService
-          .getUserName(await this.storage.get('token'))
-          .toPromise(),
+        email,
         cryptoType: 'BTC',
       });
 
@@ -71,9 +70,7 @@ export class ExchangePage implements OnInit {
         {
           value: this.rateValue * -1,
           date: this.formatDate(new Date()),
-          userData: await this.userService
-            .getUserName(await this.storage.get('token'))
-            .toPromise(),
+          email,
           cryptoType: 'BTC',
         },
       ]);
